@@ -1,0 +1,31 @@
+<!-- views/results.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resultados da Pesquisa</title>
+</head>
+<body>
+  <h1>Resultados da Pesquisa</h1>
+  <% if (meals && meals.length > 0) { %>
+    <% meals.forEach(meal => { %>
+      <h2><%= meal.strMeal %></h2>
+      <img src="<%= meal.strMealThumb %>" alt="Imagem da refeição" />
+      <p><strong>Ingredientes:</strong></p>
+      <ul>
+        <% for (let i = 1; i <= 20; i++) {
+          const ingredient = meal[`strIngredient${i}`];
+          const measure = meal[`strMeasure${i}`];
+          if (ingredient && ingredient.trim() !== '') { %>
+            <li><%= `${measure} ${ingredient}` %></li>
+          <% }
+        } %>
+      </ul>
+      <p><strong>Instruções:</strong></p>
+      <p><%= meal.strInstructions %></p>
+    <% }); %>
+  <% } else { %>
+    <p>Nenhum resultado encontrado.</p>
+  <% } %>
+</body>
+</html>
