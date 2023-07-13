@@ -1,31 +1,91 @@
-<!-- views/results.ejs -->
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>Resultados da Pesquisa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      background-image: url( https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.freepik.com%2Ffotos-gratis%2Fvariedade-plana-com-deliciosa-comida-brasileira_23-2148739179.jpg%3Fw%3D2000&tbnid=ZshRo1Wekybw0M&vet=12ahUKEwj2ncqzrYyAAxXBGLkGHWePAvsQMygAegUIARDmAQ..i&imgrefurl=https%3A%2F%2Fbr.freepik.com%2Ffotos-vetores-gratis%2Fcomida&docid=bqwAFaMLNJH4IM&w=2000&h=1333&q=comida&ved=2ahUKEwj2ncqzrYyAAxXBGLkGHWePAvsQMygAegUIARDmAQ );
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #555;
+      margin-top: 20px;
+    }
+
+    img {
+      max-width: 300px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    strong {
+      color: #333;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .no-results {
+      color: #777;
+      font-style: italic;
+    }
+  </style>
 </head>
 <body>
-  <h1>Resultados da Pesquisa</h1>
-  <% if (meals && meals.length > 0) { %>
-    <% meals.forEach(meal => { %>
-      <h2><%= meal.strMeal %></h2>
-      <img src="<%= meal.strMealThumb %>" alt="Imagem da refeição" />
-      <p><strong>Ingredientes:</strong></p>
-      <ul>
-        <% for (let i = 1; i <= 20; i++) {
-          const ingredient = meal[`strIngredient${i}`];
-          const measure = meal[`strMeasure${i}`];
-          if (ingredient && ingredient.trim() !== '') { %>
-            <li><%= `${measure} ${ingredient}` %></li>
-          <% }
-        } %>
-      </ul>
-      <p><strong>Instruções:</strong></p>
-      <p><%= meal.strInstructions %></p>
-    <% }); %>
-  <% } else { %>
-    <p>Nenhum resultado encontrado.</p>
-  <% } %>
+  <div class="container">
+    <h1>Resultados da Pesquisa</h1>
+    <% if (meals && meals.length > 0) { %>
+      <% meals.forEach(meal => { %>
+        <h2><%= meal.strMeal %></h2>
+        <img src="<%= meal.strMealThumb %>" alt="Imagem da refeição" />
+        <p><strong>Ingredientes:</strong></p>
+        <ul>
+          <% for (let i = 1; i <= 20; i++) {
+            const ingredient = meal[`strIngredient${i}`];
+            const measure = meal[`strMeasure${i}`];
+            if (ingredient && ingredient.trim() !== '') { %>
+              <li><%= `${measure} ${ingredient}` %></li>
+            <% }
+          } %>
+        </ul>
+        <p><strong>Instruções:</strong></p>
+        <p><%= meal.strInstructions %></p>
+      <% }); %>
+    <% } else { %>
+      <p class="no-results">Nenhum resultado encontrado.</p>
+    <% } %>
+  </div>
 </body>
 </html>

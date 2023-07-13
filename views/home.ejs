@@ -1,16 +1,54 @@
-<!-- views/home.ejs -->
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>Página Inicial</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      width: 250px;
+      margin-right: 10px;
+    }
+
+    button{
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: none;
+      background-color: #4CAF50;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
   <h1>Bem-vindo!!!</h1>
   
   <form action="/search" method="GET">
-    <input type="text" name="query" placeholder="Digite o nome da comida" />
-    <button type="submit">Pesquisar</button>
+    <input type="text" name="query" placeholder="Digite o nome em Inglês" />
+    <button type="submit">Pesquisar seu prato</button>
   </form>
 </body>
 </html>
